@@ -67,8 +67,8 @@ export default function Todos({
       {!currentItems.length ? (
         <div className="w-full py-16 flex flex-col justify-center items-center">
           <img src={notask} alt="" />
-          <h2 className="text-xl font-bold text-[#3F5BF6]">No Todos</h2>
-          <p>click on the create button to add a new todo.</p>
+          <h2 className="text-sm lg:text-xl font-bold text-[#3F5BF6]">No Todos</h2>
+          <p className="text-xs lg:text-md">click on the create button to add a new todo.</p>
         </div>
       ) : (
         currentItems.map((todo: TodoOptions) => (

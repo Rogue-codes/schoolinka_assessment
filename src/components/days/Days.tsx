@@ -57,7 +57,7 @@ export default function Days({selectedDay,setSelectedDay}:DaysProps) {
             selectedDay?.getDate() === date.getDate()
               ? "bg-primary text-white"
               : ""
-          } ${getTodosForDate(date).length > 0 && "border-b-2 border-primary"} border border-[#D0D5DD] py-[5px] rounded-lg  w-14 flex justify-center items-center flex-col gap-2 cursor-pointer`}
+          } ${getTodosForDate(date).length > 0 && "border-b-2 border-primary"} border border-[#D0D5DD] py-[5px] rounded-lg w-20  lg:w-14 flex justify-center items-center flex-col gap-2 cursor-pointer`}
           onClick={() => handleDayClick(date)}
         >
           <p>{dayNames[date.getDay()]}</p>

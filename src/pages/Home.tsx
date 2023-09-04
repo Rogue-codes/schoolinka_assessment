@@ -33,7 +33,7 @@ export default function Home() {
     <div className="lg:px-6">
       <div className="w-full flex justify-between items-center py-4 mb-8">
         <div>
-          <h2 className="text-3xl font-semibold">Good morning!</h2>
+          <h2 className="text-xl lg:text-3xl font-semibold">Good morning!</h2>
           <p className="text-[#475467]">You got some task to do. </p>
         </div>
 
@@ -52,7 +52,7 @@ export default function Home() {
             {`${monthArr[now.getMonth()]} `}
             {now.getFullYear()}
           </h2>
-          <div className="w-full bg-[#F9FAFB] p-3  lg:bg-transparent lg:p-0 overflow-scroll">
+          <div className="w-full bg-[#F9FAFB] p-3  lg:bg-transparent lg:p-0 overflow-scroll lg:overflow-hidden">
             <Days selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
           </div>
           <Todos

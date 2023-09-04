@@ -9,6 +9,7 @@ import ViewTodo from "../components/viewTodo";
 import { BsFillMicFill } from "react-icons/bs";
 import AddTodoMobile from "../components/mobile/AddTodoMobile";
 import ViewTodoModalMobile from "../components/mobile/ViewTodoModalMobile";
+import { AiOutlinePlus } from "react-icons/ai";
 
 export default function Home() {
   const now = new Date();
@@ -41,7 +42,7 @@ export default function Home() {
           className="lg:flex hidden justify-start items-center gap-2 bg-primary rounded-lg text-white p-2 hover:scale-110 transition-all"
           onClick={() => setShowAddTodoModal(true)}
         >
-          <p>+</p>
+          <AiOutlinePlus size={20}/>
           <p>Create New Task</p>
         </button>
       </div>
@@ -92,7 +93,7 @@ export default function Home() {
         </div>
 
         {showaddTodoModalMobile ? (
-          <div className="fixed w-full h-screen bg-[#00000075] left-0 bottom-0 z-30">
+          <div className="fixed w-full h-screen bg-[#00000075] left-0 bottom-0 z-30 lg:hidden">
             <AddTodoMobile
               setShowAddTodoModal={setShowaddTodoModalMobile}
               type={type}
@@ -103,7 +104,7 @@ export default function Home() {
             />
           </div>
         ) : showviewTodoModalMobile ? (
-          <div className="fixed w-full h-screen bg-[#00000075] left-0 bottom-0 z-30">
+          <div className="fixed w-full h-screen bg-[#00000075] left-0 bottom-0 z-30 lg:hidden">
           <ViewTodoModalMobile
               setShowviewTodoModal={setShowviewTodoModalMobile}
               setShowAddTodoModal={setShowaddTodoModalMobile}

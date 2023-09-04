@@ -56,7 +56,7 @@ export default function AddTodoMobile({
   };
 
   return (
-    <div className="bg-white absolute bottom-0 w-full p-6 rounded-tr-2xl rounded-tl-2xl">
+    <div className="bg-white  absolute bottom-0 w-full p-6 rounded-tr-2xl rounded-tl-2xl">
       <div className="w-full flex justify-between items-center">
         <p className="text-[#101828] text-[18px] leading-7">Add Task</p>
         <LiaTimesSolid

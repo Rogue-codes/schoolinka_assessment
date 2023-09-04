@@ -14,7 +14,6 @@ interface AddtodoProps {
   todoObj: TodoOptions | null;
   setTodoObj: React.Dispatch<React.SetStateAction<TodoOptions | null>>;
   setType: React.Dispatch<React.SetStateAction<string>>;
-
 }
 
 export default function AddTodo({
@@ -24,7 +23,7 @@ export default function AddTodo({
   todoObj,
   setTodoObj,
 }: AddtodoProps) {
-  const todoDate : Date | null = new Date()
+  const [todoDate, setTodoDate] = useState<Date | null>(new Date());
 
   console.log(formatDate(todoDate));
 
@@ -33,20 +32,24 @@ export default function AddTodo({
     tittle: "",
     startTime: "",
     endTime: "",
-    date: formatDate(todoDate),
+    date: "",
     isCompleted: false,
   });
 
   const dispatch = useDispatch();
   const handleTodoSubmit = () => {
-    dispatch(type === "add" ? addTodo(todos) : updateTodo(todoObj));
+    dispatch(
+      type === "add"
+        ? addTodo({ ...todos, date: formatDate(todoDate) })
+        : updateTodo({ ...todoObj, date: formatDate(todoDate) })
+    );
     // Reset the entire todos object
     setTodos({
       id: uuidv4(),
       tittle: "",
       startTime: "",
       endTime: "",
-      date: formatDate(todoDate),
+      date: "",
       isCompleted: false,
     });
 
@@ -67,8 +70,8 @@ export default function AddTodo({
           cursor="pointer"
           className="hover:scale-110 transition-all"
           onClick={() => {
-            setShowAddTodoModal(false)
-            setType("add")
+            setShowAddTodoModal(false);
+            setType("add");
             // setTodoObj(null)
           }}
         />
@@ -92,16 +95,7 @@ export default function AddTodo({
           <div className="w-[35%]">
             <DateSelect
               selected={!todoObj ? todoDate : new Date(todoObj.date)}
-              onChange={
-                type === "add"
-                  ? (date) => {
-                      setTodos({ ...todos, date: formatDate(date) });
-                    }
-                  : (date) => {
-                      todoObj &&
-                        setTodoObj({ ...todoObj, date: formatDate(date) });
-                    }
-              }
+              onChange={(date) => setTodoDate(date)}
               className="items-center !text-xs border border-[#D0D5DD] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] rounded-lg  p-3"
             />
           </div>
@@ -149,7 +143,14 @@ export default function AddTodo({
           />
         </div>
         <div className="flex justify-between mt-8">
-          <button className="border border-[#D0D5DD] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] text-[#344054] p-2 rounded-lg w-[45%]">
+          <button
+            className="border border-[#D0D5DD] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] text-[#344054] p-2 rounded-lg w-[45%] hover:scale-110 transition-all"
+            onClick={() => {
+              setShowAddTodoModal(false);
+              setType("add");
+              // setTodoObj(null)
+            }}
+          >
             Cancel
           </button>
           <button
@@ -159,7 +160,7 @@ export default function AddTodo({
               (!todos.endTime && !todoObj?.endTime) ||
               (!todos.date && !todoObj?.date)
             }
-            className="border bg-[#3F5BF6] text-white p-2 rounded-lg w-[45%] disabled:cursor-not-allowed disabled:opacity-50"
+            className="border bg-[#3F5BF6] text-white p-2 rounded-lg w-[45%] disabled:cursor-not-allowed disabled:opacity-50 hover:scale-110 transition-all"
             onClick={handleTodoSubmit}
           >
             {type === "add" ? "Add" : "Save"}

@@ -27,7 +27,7 @@ export default function Pagination({
         activeClassName='bg-[#F9FAFB] text-[#1D2939] rounded-full p-3'
         pageClassName=' px-5'
         breakClassName='px-2'
-        className='flex border-t border-[#EAECF0] pt-5 justify-center items-center'
+        className='flex border-t border-[#EAECF0] pb-12 pt-2 lg:pb-0 lg:pt-5 justify-center items-center'
         forcePage={page}
         // renderOnZeroPageCount={null}
     />

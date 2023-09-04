@@ -65,7 +65,7 @@ export default function Todos({
     <div>
       <p className="mt-8 mb-4 text-[#101828] font-semibold">My Task</p>
       {!currentItems.length ? (
-        <div className="w-full py-16 border flex flex-col justify-center items-center border-black">
+        <div className="w-full py-16 flex flex-col justify-center items-center">
           <img src={notask} alt="" />
           <h2 className="text-xl font-bold text-[#3F5BF6]">No Todos</h2>
           <p>click on the create button to add a new todo.</p>
